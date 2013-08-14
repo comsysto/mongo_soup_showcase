@@ -33,7 +33,7 @@ public class MovieServiceImplTest extends AbstractJUnit4SpringContextTests {
 
     @Test
     public void testCreateFindAndDeleteMovie() {
-        // not required when using fongo!
+
         movieService.deleteAll();
 
         Movie movie = Movie.MovieBuilder.create("Movie").build();
@@ -68,7 +68,7 @@ public class MovieServiceImplTest extends AbstractJUnit4SpringContextTests {
 
     @Test
     public void testFindByQuery() {
-        // not required when using fongo!
+
         movieService.deleteAll();
 
         Movie movie1 = randomMovie("I am Searching", true);
@@ -92,32 +92,6 @@ public class MovieServiceImplTest extends AbstractJUnit4SpringContextTests {
         assertTrue(queryResult.get(0).getTitle().equals(movie1.getTitle()));
     }
 
-    @Ignore // full text search does not work with fongo
-    @Test
-    public void testFindByQueryFullTextSearch() {
-        // not required when using fongo!
-        movieService.deleteAll();
-
-        Movie movie1 = randomMovie("I am Searching", true);
-        Movie movie2 = randomMovie("", false);
-        Movie movie3 = randomMovie("I am Searching", false);
-        Movie movie4 = randomMovie("", true);
-
-        movieService.save(movie1);
-        movieService.save(movie2);
-        movieService.save(movie3);
-        movieService.save(movie4);
-
-        MovieQuery query = MovieQuery.MovieQueryBuilder.create()
-                .withDescriptionFullTextSearch("search") // make sure stemming works
-                .withAlreadyWatched(true)
-                .build();
-
-        List<Movie> queryResult = movieService.findByQuery(query);
-
-        assertEquals(1, queryResult.size());
-        assertTrue(queryResult.get(0).getTitle().equals(movie1.getTitle()));
-    }
 
     private Movie randomMovie(String partOfDescription, boolean alreadyWatched) {
         Random random = new Random();

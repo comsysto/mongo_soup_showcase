@@ -4,14 +4,19 @@ public class JettyStart {
 
     public static void main(final String[] args) {
 
-        int port = 8080;
+        int port;
 
-        if (args.length < 1) {
-            System.out.println("JettyStart <httpport>");
-        }
-        else {
+        if (args.length > 0) {
             port = Integer.valueOf(args[0]);
         }
+        else if (!System.getenv("PORT").isEmpty()) {
+            port = Integer.parseInt(System.getenv("PORT"));
+        }
+        else {
+            port = 8080;
+        }
+
+        System.out.println("JettyStart <" + port + ">");
 
 
         System.setProperty("spring.profiles.active", "default");

@@ -58,11 +58,4 @@
     </beans>
      -->
 
-<beans profile="test">
-        <bean name="fongo" class="com.foursquare.fongo.Fongo">
-            <constructor-arg value="InMemoryMongo" />
-        </bean>
-        <bean id="mongo" factory-bean="fongo" factory-method="getMongo" />
-    </beans>
-
 </beans>

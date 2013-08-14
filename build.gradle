@@ -46,7 +46,6 @@ subprojects {
                     "org.mongodb:bson:$mongodbDriverVersion",
                     "log4j:log4j:$log4JVersion",
                     "junit:junit:$junitVersion",
-                    "com.foursquare:fongo:$fongoVersion",
                     "org.hamcrest:hamcrest-core:1.3",
                     "org.slf4j:slf4j-api:1.7.5",
                     "org.objenesis:objenesis:1.2"
@@ -90,7 +89,6 @@ subprojects {
     ext.testDeps = [
             "org.springframework:spring-test:$springVersion",
             "junit:junit:$junitVersion",
-            "com.foursquare:fongo:$fongoVersion",
             "com.lordofthejars:nosqlunit-mongodb:$nosqlunitVersion",
     ]
 
