@@ -1,1 +1,1 @@
-web: gradle build
+web: ./ui/start
