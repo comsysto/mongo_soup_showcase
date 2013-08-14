@@ -94,4 +94,11 @@ subprojects {
             "com.lordofthejars:nosqlunit-mongodb:$nosqlunitVersion",
     ]
 
+
+    task copyInstallAppFolder(type: Copy) {
+        from 'ui/build/install'
+        into 'ui/install'
+    }
+
+
 }
