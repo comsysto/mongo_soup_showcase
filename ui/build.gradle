@@ -35,9 +35,10 @@ dependencies {
 }
 
 [jettyRun, jettyRunWar]*.with {
-    httpPort = 8081
+    httpPort = 8080
     contextPath="movie"
 }
+
 [jettyRun, jettyRunWar]*.doFirst {
     System.setProperty("spring.profiles.active", "default")
 }
@@ -49,4 +50,4 @@ task copyInstallAppFolder(type: Copy) {
 
 task stage(dependsOn: ['clean', 'installApp'])
 
-stage.dependsOn { copyInstallAppFolder }
+task complete(dependsOn: ['copyInstallAppFolder'])

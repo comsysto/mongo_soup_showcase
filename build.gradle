@@ -94,5 +94,4 @@ subprojects {
             "com.lordofthejars:nosqlunit-mongodb:$nosqlunitVersion",
     ]
 
-
 }
