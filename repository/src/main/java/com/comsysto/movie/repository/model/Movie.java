@@ -14,7 +14,7 @@ import java.io.Serializable;
  */
 @Document(collection = Movie.COLLECTION_NAME)
 public class Movie implements Serializable {
-    public static final String COLLECTION_NAME = "movie";
+    public static final String COLLECTION_NAME = "cc_MTUWzOgBOtqt";
 
     @Id
     private ObjectId id;
