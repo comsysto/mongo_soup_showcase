@@ -19,6 +19,5 @@ public interface MovieRepository {
     List<Movie> findByQuery(MovieQuery query);
     void removeAll();
     void delete(Movie entity);
-    boolean collectionExists();
 
 }

@@ -3,14 +3,12 @@ package com.comsysto.movie.repository.impl;
 import com.comsysto.movie.repository.api.MovieRepository;
 import com.comsysto.movie.repository.model.Movie;
 import com.comsysto.movie.repository.query.MovieQuery;
-import com.mongodb.BasicDBObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
-import javax.annotation.PostConstruct;
 import java.util.List;
 
 /**
@@ -24,12 +22,6 @@ public class MovieRepositoryImpl implements MovieRepository {
     @Autowired
     private MongoOperations mongoOperations;
     private Class<Movie> clazz = Movie.class;
-
-    @PostConstruct
-    public void ensureTextIndex() {
-        // make sure the index is set up properly (not yet possible via Spring Data Annotations)
-        mongoOperations.getCollection(Movie.COLLECTION_NAME).ensureIndex(new BasicDBObject("description", "text"));
-    }
 
     @Override
     public void save(Movie entity) {
@@ -47,15 +39,8 @@ public class MovieRepositoryImpl implements MovieRepository {
     }
 
     @Override
-    public boolean collectionExists() {
-        return mongoOperations.collectionExists(clazz);
-    }
-
-    @Override
     public void dropCollection() {
         mongoOperations.dropCollection(clazz);
-        // make sure text index is present again after dropping
-        ensureTextIndex();
     }
 
     @Override
