@@ -24,7 +24,6 @@ import java.util.Random;
 public class MovieDBImporter {
 
     // API Key
-//    private static final String API_KEY = "16a0036a641140ce7e23ddd423dfbf50"; TODO don't publish this one!
     private static final String API_KEY = "5a1a77e2eba8984804586122754f969f";
 
     @Autowired

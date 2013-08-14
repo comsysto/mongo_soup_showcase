@@ -42,4 +42,11 @@ dependencies {
     System.setProperty("spring.profiles.active", "default")
 }
 
-task stage(dependsOn: ['clean', 'installApp', 'copyInstallAppFolder'])
+task copyInstallAppFolder(type: Copy) {
+    from 'build/install'
+    into 'install'
+}
+
+task stage(dependsOn: ['clean', 'installApp'])
+
+stage.dependsOn { copyInstallAppFolder }
