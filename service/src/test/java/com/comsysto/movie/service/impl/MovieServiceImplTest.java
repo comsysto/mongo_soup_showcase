@@ -25,6 +25,7 @@ import static junit.framework.Assert.*;
 @ContextConfiguration(locations = "classpath:com/comsysto/movie/service/spring-context.xml")
 @ActiveProfiles("test")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+@Ignore
 public class MovieServiceImplTest extends AbstractJUnit4SpringContextTests {
 
     @Autowired
