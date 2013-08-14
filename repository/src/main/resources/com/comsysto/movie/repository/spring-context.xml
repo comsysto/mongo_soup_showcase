@@ -15,11 +15,29 @@
         <constructor-arg name="databaseName" value="movie"/>
     </bean>
 
+    <bean id="credentials"
+          class="com.comsysto.movie.repository.mongodb.config.Credentials">
+    </bean>
+
+    <bean id="mongoURIString" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetObject"><ref local="credentials"/></property>
+        <property name="targetMethod"><value>getCredential</value></property>
+        <property name="arguments">
+            <list>
+                <value>mongosoup_url</value>
+                <value>mongosoup</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="mongoURI" class="com.mongodb.MongoURI">
+        <constructor-arg><ref local="mongoURIString"/></constructor-arg>
+    </bean>
+
     <beans profile="default">
-        <mongo:mongo id="mongo" host="mongodb://MTUWzOgBOtqt:uQobZsTjFCbH@dbs001.mongosoup.de/cc_MTUWzOgBOtqt">
-            <mongo:options auto-connect-retry="true"
-                           threads-allowed-to-block-for-connection-multiplier="20"/>
-        </mongo:mongo>
+        <bean id="mongo" class="com.mongodb.Mongo">
+            <constructor-arg ref="mongoURI"/>
+        </bean>
     </beans>
 
     <beans profile="test">

@@ -5,6 +5,7 @@ sourceSets {
         resources {
             srcDir 'src/main/resources'
             srcDir 'src/main/java'
+
         }
     }
     test {
@@ -21,4 +22,6 @@ dependencies {
     compile springDeps
 
     testCompile testDeps
+
+    compile 'com.googlecode.json-simple:json-simple:1.1'
 }
