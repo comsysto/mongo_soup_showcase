@@ -34,7 +34,7 @@ public class JettyStart {
         }
 
         System.setProperty("spring.profiles.active", activeSpringProfile);
-        System.out.println("Spring profile <" + activeSpringProfile + ">");
+        System.out.println("active Spring profile <" + activeSpringProfile + ">");
 
 
         System.out.println("JettyStart <" + port + ">");
