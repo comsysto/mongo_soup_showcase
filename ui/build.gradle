@@ -48,6 +48,10 @@ task copyInstallAppFolder(type: Copy) {
     into 'install'
 }
 
-task stage(dependsOn: ['clean', 'installApp'])
+task zLast(dependsOn: ['copyInstallAppFolder'])
 
-task complete(dependsOn: ['copyInstallAppFolder'])
+task stage(dependsOn: ['clean', 'installApp', 'zLast'])
+
+
+
+

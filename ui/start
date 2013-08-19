@@ -1,3 +1,6 @@
-echo "Procfile called start to call ui/Procfile to call app"
+#################
+# workaround to be able to start the app in the right context
+#################
+echo "Procfile called start to call app in the ui folder"
 cd ui
 ./install/app/bin/app
