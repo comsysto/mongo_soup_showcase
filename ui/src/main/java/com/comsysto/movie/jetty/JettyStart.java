@@ -5,6 +5,7 @@ public class JettyStart {
     public static void main(final String[] args) {
 
         int port;
+        String activeSpringProfile;
 
         // if a parameter is given to this method
         if (args.length > 0) {
@@ -22,7 +23,16 @@ public class JettyStart {
         System.out.println("JettyStart <" + port + ">");
 
 
-        System.setProperty("spring.profiles.active", "default");
+
+        if (!System.getenv("CRED_FILE").isEmpty()) {
+            activeSpringProfile = "cloudControl";
+
+        }  else {
+            activeSpringProfile = "local";
+        }
+
+        System.setProperty("spring.profiles.active", activeSpringProfile);
+        System.out.println("Spring profile <" + activeSpringProfile + ">");
 
         JettyStarterApplication jettyStarter = new JettyStarterApplication(port);
         jettyStarter.startServer();
