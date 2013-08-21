@@ -6,7 +6,7 @@ public class JettyStart {
 
         int port;
         String activeSpringProfile;
-        boolean cloudControlFlag = true;
+        boolean cloudControlFlag = (System.getenv("CRED_FILE") != null);
 
 
         if (cloudControlFlag) {
