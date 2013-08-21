@@ -13,7 +13,7 @@
         <bean id="mongoTemplate"
               class="org.springframework.data.mongodb.core.MongoTemplate">
             <constructor-arg name="mongo" ref="mongo"/>
-            <constructor-arg name="databaseName" value="cc_uUuZLtuWSyeT"/>
+            <constructor-arg name="databaseName" value="cc_MTUWzOgBOtqt"/>
         </bean>
 
         <bean id="credentials"
