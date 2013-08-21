@@ -13,7 +13,7 @@
         <bean id="mongoTemplate"
               class="org.springframework.data.mongodb.core.MongoTemplate">
             <constructor-arg name="mongo" ref="mongo"/>
-            <constructor-arg name="databaseName" value="cc_MTUWzOgBOtqt"/>
+            <constructor-arg name="databaseName"><ref local="mongoDB"/></constructor-arg>
         </bean>
 
         <bean id="credentials"
@@ -31,6 +31,11 @@
             </property>
         </bean>
 
+        <bean id="mongoDB" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+            <property name="targetObject"><ref local="credentials"/></property>
+            <property name="targetMethod"><value>getMongoSoupDbName</value></property>
+        </bean>
+
         <bean id="mongoURI" class="com.mongodb.MongoURI">
             <constructor-arg><ref local="mongoURIString"/></constructor-arg>
         </bean>
@@ -46,7 +51,6 @@
             <constructor-arg name="mongo" ref="mongo"/>
             <constructor-arg name="databaseName" value="movie"/>
         </bean>
-
 
         <mongo:mongo id="mongo" host="localhost">
             <mongo:options auto-connect-retry="true"

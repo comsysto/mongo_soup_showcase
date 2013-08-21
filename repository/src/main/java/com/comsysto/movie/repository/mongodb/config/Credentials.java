@@ -30,6 +30,15 @@ public class Credentials {
         return (JSONObject) credFile.get(addonName);
     }
 
+    public String getMongoSoupDbName() {
+
+        String mongoSoupUrl = getCredential("mongosoup_url", "mongosoup");
+
+        String[] splits = mongoSoupUrl.split("/");
+
+        return splits[splits.length-1];
+    }
+
     private JSONObject getCredFile() throws IOException {
         try {
             String credFilePath = System.getenv("CRED_FILE");
@@ -41,4 +50,5 @@ public class Credentials {
             throw new IOException(parseException);
         }
     }
+
 }
